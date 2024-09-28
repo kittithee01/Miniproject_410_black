@@ -1,3 +1,7 @@
+How to use system
+
+* Double chink on index.html *
+
 How to install system follow run command:
 
 1) npm init
