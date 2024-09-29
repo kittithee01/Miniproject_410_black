@@ -1,4 +1,5 @@
 import { Books } from "./Book.js";
+import * as fs from "fs";
 
 export class Library {
   private books: Books[] = [];
@@ -27,5 +28,21 @@ export class Library {
 
   delete(id: number): void {
     this.books = this.books.filter((book) => book.id !== id);
+  }
+
+  save(filename: string): void {
+    fs.writeFileSync(filename, JSON.stringify(this.books, null, 2));
+    console.log(`Books saved to ${filename}`);
+  }
+
+  // Method to load books from a JSON file
+  load(filename: string): void {
+    if (fs.existsSync(filename)) {
+      const data = fs.readFileSync(filename, "utf8");
+      this.books = JSON.parse(data);
+      console.log(`Books loaded from ${filename}`);
+    } else {
+      console.log(`File ${filename} does not exist.`);
+    }
   }
 }
