@@ -3,7 +3,6 @@ import { Genre } from "./Book";
 
 const myLib = new Library();
 
-// Adding books
 myLib.addBook({
   title: "Book1",
   author: "A",
@@ -19,12 +18,9 @@ myLib.addBook({
   available: false,
 });
 
-// Save to file
 myLib.save("books.json");
 
-// Create a new library instance and load from file
 const newLibrary = new Library();
 newLibrary.load("books.json");
 
-// List books to confirm loading
 newLibrary.allBook();

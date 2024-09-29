@@ -35,7 +35,6 @@ export class Library {
     console.log(`Books saved to ${filename}`);
   }
 
-  // Method to load books from a JSON file
   load(filename: string): void {
     if (fs.existsSync(filename)) {
       const data = fs.readFileSync(filename, "utf8");
