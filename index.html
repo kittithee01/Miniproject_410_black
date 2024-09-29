@@ -164,6 +164,7 @@
 
       // Update book
       document.getElementById("updateBookBtn").addEventListener("click", () => {
+        const id = parseInt(document.getElementById("updateBookId").value, 10);
         const title = document.getElementById("updateBookTitle").value;
         const author = document.getElementById("updateBookAuthor").value;
         const genre = document.getElementById("updateBookGenre").value;
@@ -173,18 +174,17 @@
         );
         const available = document.getElementById("updateAvailable").checked;
 
-        if (id) {
-          const updates = {};
-          if (title) updates.title = title;
-          if (author) updates.author = author;
-          if (genre) updates.genre = genre;
-          if (!isNaN(publishedYear)) updates.publishedYear = publishedYear;
-          updates.available = available;
-
-          library.update(id, updates);
-          alert("Book updated successfully!");
+        if (title && author && genre && publishedYear) {
+          library.update(id, {
+            title,
+            author,
+            genre,
+            publishedYear,
+            available,
+          });
+          alert("Updated!");
         } else {
-          alert("Please provide a valid Book ID.");
+          alert("Fill add data.");
         }
       });
 

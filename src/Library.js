@@ -10,10 +10,12 @@ class Library {
   }
 
   update(id, updates) {
-    const book = this.books.find((b) => b.id === id);
-    if (book) {
-      Object.assign(book, updates);
+    const bookIndex = this.books.findIndex((book) => book.id === id);
+    if (bookIndex !== -1) {
+      this.books[bookIndex] = { ...this.books[bookIndex], ...updates };
+      return true;
     }
+    return false;
   }
 
   deleteByTitle(title) {
